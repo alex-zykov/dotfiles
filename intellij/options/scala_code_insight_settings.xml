@@ -1,0 +1,6 @@
+<application>
+  <component name="ScalaCodeInsightSettings">
+    <option name="showFunctionReturnType" value="false" />
+    <option name="showObviousType" value="true" />
+  </component>
+</application>

@@ -1,0 +1,7 @@
+IdeaVimExtension
+Lombook Plugin
+Maven Archetypes
+PerforceDirectPlugin
+Subversion
+com.tabnine.TabNine
+hg4idea

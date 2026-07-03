@@ -1,0 +1,67 @@
+<application>
+  <component name="DimensionService">
+    <location key="find.popup.0.0.3072.1920@192dpi" x="932" y="542" />
+    <location key="find.popup.0.0.3584.2240@192dpi" x="1092" y="582" />
+    <location key="find.popup.-371.-1440.2560.1440" x="409" y="-1126" />
+    <location key="find.popup.0.0.3456.2234@192dpi" x="1014" y="664" />
+    <size key="find.popup.0.0.3072.1920@192dpi" width="1900" height="1312" />
+    <size key="GridCell.Tab.0.right.0.0.3072.1920@192dpi" width="2984" height="568" />
+    <size key="GridCell.Tab.0.left.0.0.3072.1920@192dpi" width="2984" height="568" />
+    <size key="GridCell.Tab.0.center.0.0.3072.1920@192dpi" width="2984" height="568" />
+    <size key="GridCell.Tab.0.bottom.0.0.3072.1920@192dpi" width="2984" height="568" />
+    <size key="GridCell.Tab.1.left.0.0.3072.1920@192dpi" width="2988" height="658" />
+    <size key="GridCell.Tab.1.center.0.0.3072.1920@192dpi" width="2988" height="658" />
+    <size key="GridCell.Tab.1.right.0.0.3072.1920@192dpi" width="2988" height="658" />
+    <size key="GridCell.Tab.1.bottom.0.0.3072.1920@192dpi" width="2988" height="658" />
+    <size key="find.popup.0.0.3584.2240@192dpi" width="1732" height="1358" />
+    <size key="GridCell.Tab.0.right.0.0.3584.2240@192dpi" width="3500" height="960" />
+    <size key="GridCell.Tab.0.left.0.0.3584.2240@192dpi" width="3500" height="960" />
+    <size key="GridCell.Tab.0.center.0.0.3584.2240@192dpi" width="3500" height="960" />
+    <size key="GridCell.Tab.0.bottom.0.0.3584.2240@192dpi" width="3500" height="960" />
+    <size key="GridCell.Tab.1.left.0.0.3584.2240@192dpi" width="3500" height="590" />
+    <size key="GridCell.Tab.1.center.0.0.3584.2240@192dpi" width="3500" height="590" />
+    <size key="GridCell.Tab.1.right.0.0.3584.2240@192dpi" width="3500" height="590" />
+    <size key="GridCell.Tab.1.bottom.0.0.3584.2240@192dpi" width="3500" height="590" />
+    <size key="GridCell.Tab.2.left.0.0.3072.1920@192dpi" width="2988" height="344" />
+    <size key="GridCell.Tab.2.center.0.0.3072.1920@192dpi" width="2988" height="344" />
+    <size key="GridCell.Tab.2.right.0.0.3072.1920@192dpi" width="2988" height="344" />
+    <size key="GridCell.Tab.2.bottom.0.0.3072.1920@192dpi" width="2988" height="344" />
+    <size key="GridCell.Tab.3.left.0.0.3072.1920@192dpi" width="2988" height="344" />
+    <size key="GridCell.Tab.3.center.0.0.3072.1920@192dpi" width="2988" height="344" />
+    <size key="GridCell.Tab.3.right.0.0.3072.1920@192dpi" width="2988" height="344" />
+    <size key="GridCell.Tab.3.bottom.0.0.3072.1920@192dpi" width="2988" height="344" />
+    <size key="GridCell.Tab.2.left.0.0.3584.2240@192dpi" width="3500" height="660" />
+    <size key="GridCell.Tab.2.center.0.0.3584.2240@192dpi" width="3500" height="660" />
+    <size key="GridCell.Tab.2.right.0.0.3584.2240@192dpi" width="3500" height="660" />
+    <size key="GridCell.Tab.2.bottom.0.0.3584.2240@192dpi" width="3500" height="660" />
+    <size key="GridCell.Tab.3.left.0.0.3584.2240@192dpi" width="3500" height="660" />
+    <size key="GridCell.Tab.3.center.0.0.3584.2240@192dpi" width="3500" height="660" />
+    <size key="GridCell.Tab.3.right.0.0.3584.2240@192dpi" width="3500" height="660" />
+    <size key="GridCell.Tab.3.bottom.0.0.3584.2240@192dpi" width="3500" height="660" />
+    <size key="find.popup.-371.-1440.2560.1440" width="1524" height="903" />
+    <size key="GridCell.Tab.-1.left.0.0.3072.1920@192dpi" width="2988" height="606" />
+    <size key="GridCell.Tab.-1.center.0.0.3072.1920@192dpi" width="2988" height="606" />
+    <size key="GridCell.Tab.-1.right.0.0.3072.1920@192dpi" width="2988" height="606" />
+    <size key="GridCell.Tab.-1.bottom.0.0.3072.1920@192dpi" width="2988" height="606" />
+    <size key="GridCell.Tab.0.left.0.0.3456.2234@192dpi" width="3324" height="540" />
+    <size key="GridCell.Tab.0.center.0.0.3456.2234@192dpi" width="3324" height="540" />
+    <size key="GridCell.Tab.0.right.0.0.3456.2234@192dpi" width="3324" height="540" />
+    <size key="GridCell.Tab.0.bottom.0.0.3456.2234@192dpi" width="3324" height="540" />
+    <size key="find.popup.0.0.3456.2234@192dpi" width="1286" height="984" />
+    <size key="GridCell.Tab.1.left.0.0.3456.2234@192dpi" width="3324" height="672" />
+    <size key="GridCell.Tab.1.center.0.0.3456.2234@192dpi" width="3324" height="672" />
+    <size key="GridCell.Tab.1.right.0.0.3456.2234@192dpi" width="3324" height="672" />
+    <size key="GridCell.Tab.1.bottom.0.0.3456.2234@192dpi" width="3324" height="672" />
+  </component>
+  <component name="WindowManager">
+    <frame x="0" y="57" width="1728" height="1060" />
+  </component>
+  <component name="WindowStateApplicationService">
+    <state x="864" y="506" width="800" height="650" key="WELCOME_SCREEN" timestamp="1782787081202">
+      <screen x="0" y="38" width="1728" height="1079" />
+    </state>
+    <state x="640" y="365" width="800" height="650" key="WELCOME_SCREEN/0.25.1280.695" timestamp="1777737367517" />
+    <state x="864" y="506" width="800" height="650" key="WELCOME_SCREEN/0.38.1728.1079" timestamp="1782787081202" />
+    <state x="864" y="506" width="800" height="650" key="WELCOME_SCREEN/0.38.1728.1079/-1280.25.1280.695" timestamp="1777736719699" />
+  </component>
+</application>

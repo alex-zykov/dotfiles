@@ -1,0 +1,14 @@
+<application>
+  <component name="UpdatesConfigurable">
+    <ignoredBuildNumbers>
+      <item value="emulator#32.1.11" />
+      <item value="platform-tools#34.0.0" />
+      <item value="system-images;android-32;google_apis;x86_64#5" />
+    </ignoredBuildNumbers>
+    <option name="LAST_BUILD_CHECKED" value="IU-251.26927.53" />
+    <option name="LAST_TIME_CHECKED" value="1782787084392" />
+    <option name="OBSOLETE_CUSTOM_REPOSITORIES_CLEAN_NEEDED" value="false" />
+    <option name="THIRD_PARTY_PLUGINS_ALLOWED" value="true" />
+    <option name="WHATS_NEW_SHOWN_FOR" value="242" />
+  </component>
+</application>

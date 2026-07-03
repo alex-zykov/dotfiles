@@ -1,0 +1,9 @@
+<application>
+  <component name="FileEditorProviderManager">
+    <option name="selectedProviders">
+      <map>
+        <entry key="text-editor,com.intellij.jboss.jbpm.chart.editor.BpmnDesignerFileEditorProvider" value="com.intellij.jboss.jbpm.chart.editor.BpmnDesignerFileEditorProvider" />
+      </map>
+    </option>
+  </component>
+</application>

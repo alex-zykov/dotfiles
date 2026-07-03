@@ -1,0 +1,13 @@
+project researchStudioE2E
+-. . -..- - / . -. - .-. -.--
+compile
+-. . -..- - / . -. - .-. -.--
+test
+-. . -..- - / . -. - .-. -.--
+projects
+-. . -..- - / . -. - .-. -.--
+project researchStudioWS
+-. . -..- - / . -. - .-. -.--
+update
+-. . -..- - / . -. - .-. -.--
+clean

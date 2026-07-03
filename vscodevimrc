@@ -1,0 +1,8 @@
+" VSCode / Cursor Vim extension config
+" Mirrors ideavimrc + vimrc remaps. Editor UI (theme, tabs, rulers, etc.)
+" lives in Cursor settings.json — only keymaps belong here.
+
+imap jk <Esc>
+nnoremap J i<CR><Esc>0
+nnoremap K kJ
+nnoremap <CR> G

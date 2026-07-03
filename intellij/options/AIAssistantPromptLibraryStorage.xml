@@ -1,0 +1,112 @@
+<application>
+  <component name="AIAssistantPromptLibraryStorage">
+    <option name="prompts">
+      <map>
+        <entry key="03ab8b3f-4879-4def-aa94-37cd3cb33e05">
+          <value>
+            <AIAssistantStoredPrompt>
+              <option name="content" value="You are writing swagger specification comment for an endpoint in YAML format.&#10;You need to generate following fields:&#10;    1. &quot;tags&quot; add one tag &quot;User Controller&quot;&#10;    2. &quot;summary&quot; take method name and write in human language. If method name is &quot;workflowAvailableDataKindExtractLists&quot; the summary should be &quot;Get available data kind extract lists&quot;&#10;    3. &quot;description&quot; write what this endpoint does&#10;    4. &quot;parameters&quot; optionally if this endpoint has request body. You can identify body from &quot;implicit request&quot; if it is &quot;UserRequest[_]&quot; or nothing = no body. If it is &quot;UserRequest[KindMetaRequest]&quot; so the body is KindMetaRequest.&#10;    5. &quot;responses&quot; for each HTTP response code. It should include at least 200 and 401.&#10;Other important things:&#10;    1. Please add comment symbol &quot;#&quot; at start of each row&#10;    2. Please follow identation - two spaces after '#'&#10;    2. Please do not add query and path parameters to parameters list&#10;    3. Please remove &quot;parameters&quot; field if you could not identify body&#10;&#10;Output example:&#10;###&#10;#  summary: Get Available Data Kind Casts&#10;#  description: This endpoint get kind name as input parameter, resolve it's corresponding WorkflowDataKind and return a list of available data kind casts.&#10;#  tags:&#10;#    - Workflow Engine&#10;#  parameters:&#10;#    - name: body&#10;#      schema:&#10;#        $ref: '#/definitions/com.sparkbeyond.rs.controllers.main.WorkflowEngineController.KindMetaRequest'&#10;#  responses:&#10;#    200:&#10;#      description: Success&#10;#      schema:&#10;#        $ref: '#/definitions/com.sparkbeyond.rs.domain.workflow.WorkflowDataAvailableKindCasts'&#10;#    401:&#10;#      description: Unauthorized access   &#10;#    404:&#10;#      description: Data kind not found&#10;###&#10;&#10;Here is an endpoint code snippet:&#10;$SELECTION" />
+              <option name="hasCustomTitle" value="true" />
+              <option name="id" value="03ab8b3f-4879-4def-aa94-37cd3cb33e05" />
+              <option name="name" value="Swagger" />
+              <option name="priority" value="2" />
+            </AIAssistantStoredPrompt>
+          </value>
+        </entry>
+        <entry key="1f004b94-827c-4341-aa00-3a5202222395">
+          <value>
+            <AIAssistantStoredPrompt>
+              <option name="content" value="Generate docstring for specific scala object for holding values of enum. In a description add a list of all enum values with description. Here is a code snippet:&#10;    $SELECTION" />
+              <option name="hasCustomTitle" value="true" />
+              <option name="id" value="1f004b94-827c-4341-aa00-3a5202222395" />
+              <option name="name" value="Enum" />
+              <option name="priority" value="3" />
+            </AIAssistantStoredPrompt>
+          </value>
+        </entry>
+        <entry key="38f8e2b8-d4a4-4cb5-a9d3-c2499758172b">
+          <value>
+            <AIAssistantStoredPrompt>
+              <option name="content" value="Here is a case class of the block in a workflow pipeline. `compiledInput` represents a list of block input ports. `compiledOutput` represents a list of block output ports. Please generate docstring for given block case class. In description please write what this block does. In parameters list if the parameter is a port please follow format &quot;@param &lt;name&gt; &lt;Input/Output&gt; &lt;single/sequence&gt; port. &lt;used for&gt;&quot;. Here is a class definition: $SELECTION" />
+              <option name="hasCustomTitle" value="true" />
+              <option name="id" value="38f8e2b8-d4a4-4cb5-a9d3-c2499758172b" />
+              <option name="name" value="WorkflowBlock" />
+              <option name="priority" value="1" />
+            </AIAssistantStoredPrompt>
+          </value>
+        </entry>
+        <entry key="6ae7bd33-cbb0-411f-91b5-c349e436a089">
+          <value>
+            <AIAssistantStoredPrompt>
+              <option name="content" value="Here is a trait for database repository. You need to copy docstring comments to this trait from the implementation I will provide.&#10;Implementation:&#10;$SELECTION" />
+              <option name="hasCustomTitle" value="true" />
+              <option name="id" value="6ae7bd33-cbb0-411f-91b5-c349e436a089" />
+              <option name="name" value="Here is a trait for database repository. You need to copy docstring comments to this trait from the implementation I will provide. Implement" />
+              <option name="priority" value="4" />
+              <option name="waitForInput" value="true" />
+            </AIAssistantStoredPrompt>
+          </value>
+        </entry>
+        <entry key="bba8463b-5080-46ca-8d37-679c9f3cd522">
+          <value>
+            <AIAssistantStoredPrompt>
+              <option name="content" value="Here is a code that extract fields from body JSON API.&#10;You need to write a scala case class to use for JSON body parsing. After case class please write a variable definition for JSON codec in provided format. Please do not add import statements. Please not that all fields that use Try() are optional.&#10;Sample input:&#10;```&#10;def trendYearsMultiIndex(numOfYears: Int, index: String) = userAuthAction.async {&#10;&#9;&#9;implicit request =&gt;&#10;val terms = read[Seq[String]](extractJsonField(&quot;terms&quot;))&#10;val project = Try(extractJsonField(&quot;project&quot;)).toOption&#10;val fields = Try(read[Seq[String]](extractJsonField(&quot;fields&quot;))).toOption&#10;```&#10;Sample output:&#10;```&#10;case class TrendYearsMultiIndexRequest(&#10;    terms: Seq[String],&#10;    project: Option[String],&#10;    fields: Option[Seq[String]]&#10;)&#10;&#10;implicit val trendYearsMultiIndexRequestCodec: JsonValueCodec[TrendYearsMultiIndexRequest]                 = JsonCodecMaker.make[TrendYearsMultiIndexRequest](CodecMakerConfig.withTransientDefault(false).withTransientEmpty(false))&#10;```&#10;Here is a code to convert:&#10;$SELECTION" />
+              <option name="hasCustomTitle" value="true" />
+              <option name="id" value="bba8463b-5080-46ca-8d37-679c9f3cd522" />
+              <option name="name" value="API fields to JsonIter" />
+              <option name="priority" value="6" />
+            </AIAssistantStoredPrompt>
+          </value>
+        </entry>
+        <entry key="builtin_findproblems">
+          <value>
+            <AIAssistantStoredPrompt>
+              <option name="builtIn" value="true" />
+              <option name="content" value="Find potential problems in $SELECTION" />
+              <option name="hasCustomTitle" value="true" />
+              <option name="id" value="builtin_findproblems" />
+              <option name="name" value="Find Problems" />
+              <option name="priority" value="100500" />
+              <option name="showInInput" value="false" />
+            </AIAssistantStoredPrompt>
+          </value>
+        </entry>
+        <entry key="builtin_newchat">
+          <value>
+            <AIAssistantStoredPrompt>
+              <option name="builtIn" value="true" />
+              <option name="content" value="$SELECTION" />
+              <option name="hasCustomTitle" value="true" />
+              <option name="id" value="builtin_newchat" />
+              <option name="name" value="New Chat Using Selection" />
+              <option name="priority" value="100500" />
+              <option name="showInInput" value="false" />
+              <option name="waitForInput" value="true" />
+            </AIAssistantStoredPrompt>
+          </value>
+        </entry>
+        <entry key="d83781f6-6e03-4b41-afba-5130e340508e">
+          <value>
+            <AIAssistantStoredPrompt>
+              <option name="content" value="Please write concise description of the method not more than 3 lines of text for the documentation. Please add details of how this method works for understanding. Please pay attention to comments in a code for method understanding. Please do not add description of parameters and method name. Please write your answer in a comment block surrounded with &quot;/** */&quot;. Here is a code snippet of a method:&#10;$SELECTION" />
+              <option name="hasCustomTitle" value="true" />
+              <option name="id" value="d83781f6-6e03-4b41-afba-5130e340508e" />
+              <option name="name" value="Method description" />
+            </AIAssistantStoredPrompt>
+          </value>
+        </entry>
+        <entry key="e990ee1f-285d-4b42-9b36-62dbf5ce9319">
+          <value>
+            <AIAssistantStoredPrompt>
+              <option name="content" value="Generate docstring of object containing error codes. Here is a sample:&#10;```&#10;&#9;/**&#10;&#9; * Represents the possible error codes that can occur during workflow compilation.&#10;&#9; *&#10;&#9; * The error codes are as follows:&#10;&#9; * - `unknown` (100): Unknown compile error occurred.&#10;&#9; * - `blockKindNotRecognized` (101): The block kind is not recognized.&#10;&#9; * - `missingPorts` (102): Some ports are missing in some block definition.&#10;&#9; * - `portNotValued` (103): Port value is missing.&#10;&#9; ....&#10;```&#10;This is the object:&#10;$SELECTION" />
+              <option name="hasCustomTitle" value="true" />
+              <option name="id" value="e990ee1f-285d-4b42-9b36-62dbf5ce9319" />
+              <option name="name" value="Error code" />
+              <option name="priority" value="5" />
+            </AIAssistantStoredPrompt>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</application>

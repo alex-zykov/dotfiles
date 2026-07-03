@@ -1,65 +1,74 @@
 #!/bin/bash
 ############################
-# .make.sh
-# This script creates symlinks from the home directory to any desired dotfiles in ~/dotfiles
+# makesymlinks.sh
+# Symlinks dotfiles from ~/System/dotfiles into place.
+# Idempotent: correct existing symlinks are skipped, anything else
+# is backed up to a timestamped directory before being replaced.
 ############################
 
-########## Variables
+dir=~/System/dotfiles
+backupdir=~/dotfiles_old/$(date +%Y%m%d-%H%M%S)
 
-dir=~/dotfiles                    # dotfiles directory
-olddir=~/dotfiles_old             # old dotfiles backup directory
-files="gitconfig bashrc xvimrc ideavimrc vimrc vim zshrc oh-my-zsh private conky"    # list of files/folders to symlink in homedir
+# files/folders symlinked as ~/.<name>
+files="gitconfig bashrc xvimrc ideavimrc vscodevimrc vimrc vim zshrc oh-my-zsh"
 
-##########
+# folders symlinked as ~/.config/<name>
+config_dirs="sketchybar"
 
-# create dotfiles_old in homedir
-echo -n "Creating $olddir for backup of any existing dotfiles in ~ ..."
-mkdir -p $olddir
-echo "done"
-
-# change to the dotfiles directory
-echo -n "Changing to the $dir directory ..."
-cd $dir
-echo "done"
-
-# move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks from the homedir to any files in the ~/dotfiles directory specified in $files
-for file in $files; do
-    echo "Moving any existing dotfiles from ~ to $olddir"
-    mv ~/.$file ~/dotfiles_old/
-    echo "Creating symlink to $file in home directory."
-    ln -s $dir/$file ~/.$file
-done
-
-install_zsh () {
-# Test to see if zshell is installed.  If it is:
-if [ -f /bin/zsh -o -f /usr/bin/zsh ]; then
-    # Clone my oh-my-zsh repository from GitHub only if it isn't already present
-    if [[ ! -d $dir/oh-my-zsh/ ]]; then
-        git clone http://github.com/robbyrussell/oh-my-zsh.git
+# Create a symlink at $2 pointing to $1, backing up whatever was there.
+link() {
+    local target=$1 linkpath=$2
+    if [ "$(readlink "$linkpath")" = "$target" ]; then
+        echo "ok: $linkpath"
+        return
     fi
-    # Set the default shell to zsh if it isn't currently set to zsh
-    if [[ ! $(echo $SHELL) == $(which zsh) ]]; then
-        chsh -s $(which zsh)
+    if [ -e "$linkpath" ] || [ -L "$linkpath" ]; then
+        mkdir -p "$backupdir"
+        echo "backing up $linkpath -> $backupdir/"
+        mv "$linkpath" "$backupdir/"
     fi
-else
-    # If zsh isn't installed, get the platform of the current machine
-    platform=$(uname);
-    # If the platform is Linux, try an apt-get to install zsh and then recurse
-    if [[ $platform == 'Linux' ]]; then
-        if [[ -f /etc/redhat-release ]]; then
-            sudo yum install zsh
-            install_zsh
-        fi
-        if [[ -f /etc/debian_version ]]; then
-            sudo apt-get install zsh
-            install_zsh
-        fi
-    # If the platform is OS X, tell the user to install zsh :)
-    elif [[ $platform == 'Darwin' ]]; then
-        echo "Please install zsh, then re-run this script!"
-        exit
-    fi
-fi
+    ln -s "$target" "$linkpath"
+    echo "linked: $linkpath -> $target"
 }
 
-install_zsh
+# oh-my-zsh is gitignored — clone it if missing (fresh machine)
+if [ ! -d "$dir/oh-my-zsh" ]; then
+    git clone https://github.com/ohmyzsh/ohmyzsh.git "$dir/oh-my-zsh"
+fi
+if [ ! -d "$dir/oh-my-zsh/custom/plugins/zsh-syntax-highlighting" ]; then
+    git clone --depth 1 https://github.com/zsh-users/zsh-syntax-highlighting.git \
+        "$dir/oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
+fi
+
+for file in $files; do
+    link "$dir/$file" ~/."$file"
+done
+
+mkdir -p ~/.config
+for cfg in $config_dirs; do
+    link "$dir/$cfg" ~/.config/"$cfg"
+done
+
+# Cursor settings
+cursor_user="$HOME/Library/Application Support/Cursor/User"
+if [ -d "$cursor_user" ]; then
+    link "$dir/cursor/settings.json" "$cursor_user/settings.json"
+fi
+
+# IntelliJ IDEA settings (links into the newest IntelliJIdea* config dir)
+idea_dir=$(ls -d "$HOME/Library/Application Support/JetBrains/"IntelliJIdea* 2>/dev/null | sort -V | tail -1)
+if [ -n "$idea_dir" ]; then
+    for item in options keymaps codestyles colors inspection consoles disabled_plugins.txt idea.vmoptions; do
+        link "$dir/intellij/$item" "$idea_dir/$item"
+    done
+fi
+
+# iTerm2: load/save prefs from the dotfiles folder (no symlink needed)
+defaults write com.googlecode.iterm2 PrefsCustomFolder -string "$dir/iterm2"
+defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -bool true
+echo "iTerm2 prefs folder set to $dir/iterm2"
+
+# Set the default shell to zsh if it isn't already
+if [ "$SHELL" != "$(which zsh)" ]; then
+    chsh -s "$(which zsh)"
+fi

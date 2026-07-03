@@ -1,0 +1,6 @@
+<application>
+  <component name="ParameterNameHintsSettings">
+    <option id="scala.apply.update.hint" value="true" />
+    <option id="scala.references.names.hint" value="true" />
+  </component>
+</application>

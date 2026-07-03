@@ -1,5 +1,5 @@
 # Explicitly configured $PATH variable
-PATH=$HOME/bin:$HOME/.bin/:/usr/local/git/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/opt/local/bin:/opt/local/sbin:/usr/X11/bin
+PATH=$HOME/bin:$HOME/.bin:$HOME/.pyenv/shims:${PATH}:/usr/local/git/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/opt/local/bin:/opt/local/sbin:/usr/X11/bin:$HOME/.bun/bin
 
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
@@ -29,15 +29,14 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(
-	git 
-	osx 
-	zsh-syntax-highlighting 
+	git
+	macos
+	zsh-syntax-highlighting
 	brew 
 	repo 
 	sudo 
-	knife 
-	vagrant 
-	bundler 
+	knife
+	bundler
 	web-search
 	bower
 	colorize
@@ -46,7 +45,6 @@ plugins=(
 	github
 	httpie
 	man
-	meteor
 	mvn
 	node
 	npm
@@ -56,13 +54,11 @@ plugins=(
 	python
 	rsync
 	scala
-	terminator
-	tmux
-	ubuntu
 	z
 )
 
 source $ZSH/oh-my-zsh.sh
+source $(brew --prefix)/share/zsh/site-functions/_todoist_peco
 
 # Put any proprietary or private functions/values in ~/.private, and this will source them
 if [ -f $HOME/.private ]; then
@@ -85,13 +81,12 @@ alias gk='gitk --all&'
 alias gx='gitx --all'
 alias got='git '
 alias get='git '
-
-## Vagrant Aliases
-alias vag='vagrant'
-alias vagup='vagrant up'
-alias vagdestroy='vagrant destroy'
-alias vagssh='vagrant ssh'
-alias vaghalt='vagrant halt'
+fbd() {
+  local branches branch
+  branches=$(git for-each-ref --count=30 --sort=-committerdate refs/heads/ --format="%(refname:short)") &&
+  branch=$(echo "$branches" | fzf --multi ) &&
+  git branch -D $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
+}
 
 ## Miscellaneous Aliases
 alias htop='sudo htop'
@@ -108,10 +103,35 @@ qfind () {
 if [ -f /usr/bin/vim ]; then
   export EDITOR=/usr/bin/vim
 fi
-# Go paths
-export GOROOT=/usr/local/go
-export GOPATH=$HOME/.go
-export PATH=$PATH:/usr/local/go/bin
-# Java paths
-export JAVA_HOME=/usr/local/java/jdk-9.0.4
-export PATH=$PATH:/usr/local/java/jdk-9.0.4/bin
+# Go paths (Go itself comes from Homebrew — see install/golang.sh)
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
+# Docker
+export PATH="$PATH:/Applications/Docker.app/Contents/Resources/bin/"
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+# Ruby: prefer rbenv (see install/rbenv-ruby.sh), fall back to Homebrew ruby
+if command -v rbenv >/dev/null 2>&1; then
+  eval "$(rbenv init - zsh)"
+elif [ -d "/opt/homebrew/opt/ruby/bin" ]; then
+  export PATH=/opt/homebrew/opt/ruby/bin:$PATH
+  export PATH=`gem environment gemdir`/bin:$PATH
+fi
+
+# Conda: activate if installed (see install/conda-python.sh)
+if command -v conda >/dev/null 2>&1; then
+  eval "$(conda shell.zsh hook)"
+fi
+
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
+
+# bun completions
+[ -s "/Users/rio/.bun/_bun" ] && source "/Users/rio/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

@@ -1,16 +1,16 @@
 [alias]
-        st = status
-        co = checkout
-        br = branch
-        ci = commit
-        cp = cherry-pick
-        br = branch 
-        undo-commit = reset --soft HEAD~1
-        sup = submodule update --init --recursive
-        clean-merged = !git branch --merged | grep -v \"\\*\" | xargs -n 1 git branch -d
+  st = status
+  co = checkout
+  br = branch
+  ci = commit
+  cp = cherry-pick
+  br = branch 
+  undo-commit = reset --soft HEAD~1
+  sup = submodule update --init --recursive
+  clean-merged = !git branch --merged | grep -v \"\\*\" | xargs -n 1 git branch -d
 	diff = diff --word-diff
 	dc = diff --cached
-        sl = stash list
+  sl = stash list
 	sa = stash apply
 	ss = stash save
 	r = reset
@@ -19,14 +19,14 @@
 	rh = reset --hard
 	rh1 = reset HEAD^ --hard
 	rh2 = reset HEAD^^ --hard
-        ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
-        ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
-        lnc = log --pretty=format:"%h\\ %s\\ [%cn]"
-        lds = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
-        ld = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative
-        le = log --oneline --decorate
-        lol = log --graph --decorate --pretty=oneline --abbrev-commit --all
-        filelog = log -u
+  ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
+  ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+  lnc = log --pretty=format:"%h\\ %s\\ [%cn]"
+  lds = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
+  ld = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative
+  le = log --oneline --decorate
+  lol = log --graph --decorate --pretty=oneline --abbrev-commit --all
+  filelog = log -u
 	fl = log -u
 	dl = "!git ll -1"
 	dlc = diff --cached HEAD^
@@ -34,8 +34,20 @@
 	grep = grep -Ii
 	gr = grep -Ii
 	la = "!git config -l | grep alias | cut -c 7-"	
+  lb = !git reflog show --pretty=format:'%gs ~ %gd' --date=relative | grep 'checkout:' | grep -oE '[^ ]+ ~ .*' | awk -F~ '!seen[$1]++' | head -n 10 | awk -F' ~ HEAD@{' '{printf(\"  \\033[33m%s: \\033[37m %s\\033[0m\\n\", substr($2, 1, length($2)-1), $1)}'
+  cb = "!git checkout $(git branch | fzf | xargs)"
 	done = "!f() { git branch | grep "$1" | cut -c 3- | grep -v done | xargs -I{} git branch -m {} done-{}; }; f"
+	ignore = update-index --skip-worktree
+	unignore = update-index --no-skip-worktree
+	ignored = !git ls-files -v | grep \"^S\"
 
 [user]
         name = Alexovit
         email = mail@alexov.it
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+[push]
+	default = current
