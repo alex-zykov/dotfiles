@@ -4,3 +4,10 @@ vim/.netrwhist
 chef/
 private
 conky/log
+# IntelliJ machine-local / sensitive (project paths, device id)
+intellij/options/recentProjects.xml
+intellij/options/trusted-paths.xml
+intellij/options/other.xml
+intellij/options/path.macros.xml
+intellij/options/vim_settings_local.xml
+intellij/options/aeIdeId.xml
