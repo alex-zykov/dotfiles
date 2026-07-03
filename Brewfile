@@ -135,3 +135,11 @@ vscode "yzhang.markdown-all-in-one"
 vscode "zerodind.familiar-java-themes"
 npm "@anthropic-ai/claude-code"
 npm "corepack"
+# Custom macOS status bar
+brew "felixkratz/formulae/sketchybar"
+# Todoist CLI client
+brew "sachaos/todoist/todoist"
+# GUI apps whose settings live in this repo
+cask "cursor"
+cask "iterm2"
+cask "jetbrains-toolbox"

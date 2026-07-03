@@ -58,7 +58,7 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
-source $(brew --prefix)/share/zsh/site-functions/_todoist_peco
+[ -f "$(brew --prefix)/share/zsh/site-functions/_todoist_peco" ] && source "$(brew --prefix)/share/zsh/site-functions/_todoist_peco"
 
 # Put any proprietary or private functions/values in ~/.private, and this will source them
 if [ -f $HOME/.private ]; then

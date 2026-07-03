@@ -13,6 +13,12 @@ echo "==> Installing Node (latest LTS) and npm (latest)..."
 volta install node
 volta install npm
 
+if [ ! -d "$HOME/.bun" ]; then
+    echo "==> Installing Bun..."
+    curl -fsSL https://bun.sh/install | bash
+fi
+
 echo "==> Done:"
 node --version
 npm --version
+"$HOME/.bun/bin/bun" --version
