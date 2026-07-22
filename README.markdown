@@ -76,3 +76,5 @@ Maintenance
 - `cursor/update-extensions.sh` — refresh the Cursor extensions list
 - `./makesymlinks.sh` — idempotent; re-run any time (e.g. after an IDEA
   version upgrade, it links the newest `IntelliJIdea*` config dir)
+
+<!-- dummy edit test -->
